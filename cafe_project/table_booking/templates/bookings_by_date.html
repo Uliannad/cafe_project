@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Бронювання{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА, ЯК НА ІНШИХ СТОРІНКАХ -->
+  <div class="card shadow-lg bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <h2 class="mb-4 text-center">Бронювання</h2>
+
+      <!-- ФОРМА ВИБОРУ ДАТИ -->
+      <form method="get" class="d-flex justify-content-center gap-2 mb-4">
+        <input type="date"
+               name="date"
+               value="{{ date }}"
+               class="form-control"
+               style="max-width: 200px;">
+
+        <button type="submit" class="btn btn-primary">
+          Показати
+        </button>
+      </form>
+
+      {% if bookings %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+
+          {% for b in bookings %}
+          <div class="col">
+            <div class="card h-100 shadow-sm mx-auto text-center" style="max-width: 280px;">
+              <div class="card-body">
+
+                <h5 class="card-title mb-2">
+                  {{ b.client.name }}
+                </h5>
+
+                <p class="card-text mb-1">
+                  🪑 Столик {{ b.table.number }}
+                </p>
+
+                <p class="card-text text-muted">
+                  ⏰ {{ b.start_time }} – {{ b.end_time }}
+                </p>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      {% elif date %}
+        <p class="text-center mt-3">
+          Немає бронювань на цю дату
+        </p>
+      {% endif %}
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

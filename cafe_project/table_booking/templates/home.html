@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА -->
+  <div class="card shadow-lg bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <!-- ВІТАННЯ -->
+      <h1 class="text-center mb-3"> Ласкаво просимо!</h1>
+      <p class="text-center mb-5">
+        Система керування столиками та бронюванням
+      </p>
+
+      <!-- КАРТКИ-НАВІГАЦІЯ -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- СТОЛИКИ -->
+        <div class="col">
+          <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+              <h4 class="mb-3">🪑 Столики</h4>
+              <p>Перегляд доступних столиків</p>
+              <a href="/table-booking/tables/"
+                 class="btn btn-primary btn-sm">
+                Перейти
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- КЛІЄНТИ -->
+        <div class="col">
+          <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+              <h4 class="mb-3">👤 Клієнти</h4>
+              <p>Список клієнтів та їх дані</p>
+              <a href="/table-booking/clients/"
+                 class="btn btn-primary btn-sm">
+                Перейти
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- БРОНЮВАННЯ -->
+        <div class="col">
+          <div class="card h-100 shadow-sm text-center">
+            <div class="card-body">
+              <h4 class="mb-3">📅 Бронювання</h4>
+              <p>Керування бронюваннями</p>
+              <a href="/table-booking/bookings/"
+                 class="btn btn-primary btn-sm">
+                Перейти
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

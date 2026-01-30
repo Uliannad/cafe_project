@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+
+  <div class="card shadow-lg border-0 bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <h2 class="mb-4">Клієнт: {{ client.name }}</h2>
+
+      <p><strong>Телефон:</strong> {{ client.phone }}</p>
+      <p><strong>Email:</strong> {{ client.email }}</p>
+      <p><strong>Зареєстрований:</strong> {{ client.created_at }}</p>
+
+      <hr>
+
+      <h4 class="mt-4">Бронювання клієнта</h4>
+      <ul>
+        {% for booking in bookings %}
+          <li>
+            {{ booking.date }} — столик {{ booking.table.number }}
+            ({{ booking.start_time }} – {{ booking.end_time }})
+          </li>
+        {% empty %}
+          <li>Немає бронювань</li>
+        {% endfor %}
+      </ul>
+
+      <a href="/table-booking/clients/" class="btn btn-outline-secondary mt-3">
+        ← Назад до списку клієнтів
+      </a>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+

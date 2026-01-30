@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Клієнти{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА ДЛЯ ВСЕЙ СТРАНИЦЫ -->
+  <div class="card shadow-lg border-0 bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <h2 class="mb-4 text-center">Клієнти</h2>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+        {% for client in clients %}
+        <div class="col">
+          <div class="card h-100 shadow-sm mx-auto" style="max-width: 280px;">
+            <img src="{% static 'img/img_wom.png' %}"
+                 class="card-img-top"
+                 alt="client">
+
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ client.name }}</h5>
+              <p class="card-text">
+                📞 {{ client.phone }}
+              </p>
+
+              <div class="d-flex justify-content-center">
+                <a href="/table-booking/clients/{{ client.id }}/"
+                   class="btn btn-primary btn-sm">
+                  Детальніше
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+          <p class="text-center">Немає клієнтів</p>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

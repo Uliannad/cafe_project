@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Столик {{ table.number }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА, ЯК НА ІНШИХ СТОРІНКАХ -->
+  <div class="card shadow-lg bg-light bg-opacity-75">
+    <div class="card-body text-center">
+
+      <h2 class="mb-4">Столик {{ table.number }}</h2>
+
+      <p class="mb-2">
+        <strong>Кількість місць:</strong> {{ table.seats }}
+      </p>
+
+      <p class="mb-4">
+        <strong>Активний:</strong>
+        {% if table.is_active %}
+          Так
+        {% else %}
+          Ні
+        {% endif %}
+      </p>
+
+      <a href="/table-booking/tables/{{ table.id }}/bookings/"
+         class="btn btn-primary btn-sm">
+        Переглянути бронювання
+      </a>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

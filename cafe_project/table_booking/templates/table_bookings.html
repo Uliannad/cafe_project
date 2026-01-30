@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Бронювання столика {{ table.number }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА, ЯК НА ВСІХ СТОРІНКАХ -->
+  <div class="card shadow-lg bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <h2 class="mb-4 text-center">
+        Бронювання столика {{ table.number }}
+      </h2>
+
+      {% if bookings %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+
+          {% for b in bookings %}
+          <div class="col">
+            <div class="card h-100 shadow-sm mx-auto text-center" style="max-width: 280px;">
+              <div class="card-body">
+
+                <p class="mb-2">
+                  <strong>📅 {{ b.date }}</strong>
+                </p>
+
+                <p class="mb-2">
+                  ⏰ {{ b.start_time }} – {{ b.end_time }}
+                </p>
+
+                <p class="text-muted mb-0">
+                  👤 {{ b.client.name }}
+                </p>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      {% else %}
+        <p class="text-center">Бронювань немає</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

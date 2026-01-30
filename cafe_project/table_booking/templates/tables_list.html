@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Активні столики{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- РАМКА, ЯК У КЛІЄНТІВ -->
+  <div class="card shadow-lg bg-light bg-opacity-75">
+    <div class="card-body">
+
+      <h2 class="mb-4 text-center">Активні столики</h2>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+        {% for table in tables %}
+        <div class="col">
+          <div class="card h-100 shadow-sm mx-auto text-center" style="max-width: 280px;">
+            <div class="card-body">
+              <h5 class="card-title">Столик {{ table.number }}</h5>
+
+              <p class="card-text">
+                👥 {{ table.seats }} місць
+              </p>
+
+              <div class="d-flex justify-content-center">
+                <a href="/table-booking/tables/{{ table.id }}/"
+                   class="btn btn-primary btn-sm">
+                  Детальніше
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {% empty %}
+          <p class="text-center">Немає активних столиків</p>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
